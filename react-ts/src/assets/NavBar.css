@@ -1,0 +1,90 @@
+.navbar {
+    background-color:#097969;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    color: #ECFFDC;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-link {
+    color: #ECFFDC;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .navbar-brand:hover {
+    color: #8A9A5B;
+  }
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ECFFDC;
+  }
+  .nav-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+  } 
+  .navProfilePic {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+  }
+  .nav-user {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-username {
+  font-weight: 500;
+}
+
+.nav-auth-button {
+  background: none;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 4px 12px;
+  font-size: 0.9rem;
+  transition: background 0.15s;
+}
+
+.nav-auth-button:hover {
+  background: rgba(255,255,255,0.15);
+}
+  
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 1rem;
+    }
+  
+    .navbar-brand {
+      font-size: 1.2rem;
+    }
+  
+    .navbar-links {
+      gap: 1rem;
+    }
+  
+    .nav-link {
+      padding: 0.5rem;
+    }
+  }
