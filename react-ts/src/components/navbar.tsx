@@ -1,31 +1,59 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useAccount, useBalance } from "wagmi";
+import { useAccount, useBalance, useChainId } from "wagmi";
 import { formatEther } from "viem";
+import "../assets/NavBar.css";
+
+const NETWORK_NAMES: Record<number, string> = {
+    11155111: "Sepolia",
+};
+
+function NetworkIcon() {
+    return (
+        <span className="app-network-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M2 12h20" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
+        </span>
+    );
+}
 
 export function Navbar() {
     const { address, isConnected } = useAccount();
+    const chainId = useChainId();
+    const networkName = chainId ? NETWORK_NAMES[chainId] ?? `Chain ${chainId}` : undefined;
     const { data: balance } = useBalance({
         address,
     });
 
     return (
-        <nav className="app-navbar sticky top-0 z-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
-                    {/* Logo */}
+        <nav className="app-navbar">
+            <div className="app-navbar-inner">
+                <div className="app-navbar-row">
                     <div className="app-brand">
                         <span className="app-brand-icon">🧘</span>
                         <span className="app-brand-title">Yoga DApp</span>
                     </div>
 
-                    {/* Right side - Balance + Connect Button */}
-                    <div className="flex items-center gap-4">
-                        {isConnected && balance && (
-                            <div className="app-balance-card hidden sm:flex items-center gap-2 px-4 py-2 rounded-2xl">
-                                <span className="text-sm">Balance:</span>
-                                <span className="font-mono font-semibold">
-                                    {`${formatEther(balance.value).slice(0, 6)} ${balance.symbol}`}
-                                </span>
+                    <div className="app-navbar-actions">
+                        {isConnected && (
+                            <div className="app-wallet-status">
+                                {networkName && (
+                                    <div className="app-network-badge" title={`Rete: ${networkName}`}>
+                                        <NetworkIcon />
+                                        <span className="app-network-dot" aria-hidden="true" />
+                                        <span className="app-network-name">{networkName}</span>
+                                    </div>
+                                )}
+                                {balance && (
+                                    <div className="app-balance-card">
+                                        <span className="app-balance-label">Saldo:</span>
+                                        <span className="app-balance-value">
+                                            {`${formatEther(balance.value).slice(0, 6)} ${balance.symbol}`}
+                                        </span>
+                                    </div>
+                                )}
                             </div>
                         )}
                         <ConnectButton />

@@ -5,7 +5,10 @@ export const ProductCard = ({ product, onBuy }: { product: typeof products[0], o
   return (
     <div className="product-card">
       <div className="product-image">
-        <img src={product.image} alt={product.name} />
+        <img src={product.image} 
+             alt={product.name} 
+             loading= "lazy"
+             />
       </div>
       <div className="product-description">
         <h3 className="product-name">{product.name}</h3>
@@ -20,3 +23,4 @@ export const ProductCard = ({ product, onBuy }: { product: typeof products[0], o
     </div>
   );
 };
+
