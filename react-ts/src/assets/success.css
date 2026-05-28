@@ -1,0 +1,88 @@
+.success-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+}
+
+.success-card {
+  width: min(100%, 32rem);
+  padding: 2rem;
+  border-radius: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 12px 30px var(--color-shadow);
+}
+
+.success-badge {
+  display: inline-block;
+  margin: 0 0 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--color-bg) 70%, white);
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.success-card h1 {
+  margin: 0 0 1.25rem;
+  font-size: 1.75rem;
+  color: var(--color-heading);
+}
+
+.success-details {
+  margin: 0 0 1.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+}
+
+.success-details dt {
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.success-details dd {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.success-hash {
+  word-break: break-all;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.success-explorer {
+  color: var(--color-bg);
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.5rem;
+  display: block;
+}
+
+.success-explorer-container {
+  text-align: center;
+  background: var(--color-accent-strong);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  box-shadow: 0 6px 12px var(--color-shadow);
+  margin: 0 auto;
+  width: 70%;
+}
+
+.success-back {
+  display: inline-block;
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  padding: 1rem;
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+}

@@ -1,7 +1,7 @@
 import { products } from "./products";
 import "../assets/productCard.css"
 
-export const ProductCard = ({ product, onBuy }: { product: typeof products[0], onBuy: (price: string) => void }) => {
+export const ProductCard = ({ product, onBuy }: { product: typeof products[0], onBuy: (product: typeof products[0]) => void }) => {
   return (
     <div className="product-card">
       <div className="product-image">
@@ -15,7 +15,7 @@ export const ProductCard = ({ product, onBuy }: { product: typeof products[0], o
         <p className="product-copy">{product.description}</p>
         <div className="card-actions">
           <p className="product-price">{product.price} ETH</p>
-          <button className="buy-button" onClick={() => onBuy(product.price)}>
+          <button className="buy-button" onClick={() => onBuy(product)}>
             Buy
           </button>
         </div>

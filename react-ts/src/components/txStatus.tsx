@@ -26,7 +26,7 @@ export const TxStatus = ({ isPending, isConfirming, isSuccess, error, txHash }: 
     emoji = '❌';
   }
 
-  const txLink = txHash ? `https://etherscan.io/tx/${txHash}` : undefined;
+  const txLink = txHash ? `https://sepolia.etherscan.io/tx/${txHash}` : undefined;
 
   return (
     <div className="tx-toast" role="status" aria-live="polite">

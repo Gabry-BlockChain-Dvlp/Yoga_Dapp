@@ -23,7 +23,7 @@ export const products: Product[] = [
 
     {id: 3, name: 'Yoga blocks', 
      price: '0.0005', 
-     description: 'Support your poses with these sturdy yoga blocks.', 
+     description: 'Support your poses with these study yoga blocks.', 
      image: `${pinata}bafybeidkppklvtzfjh3msoveap2txdspeufnoznz7lwubxhunu6ft7qrvy`},
 
     {id: 4, name: 'Intermediate yoga pack', 

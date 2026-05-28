@@ -1,34 +1,59 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSendTransaction, useWaitForTransactionReceipt } from "wagmi";
 import { parseEther } from "viem";
+import { useNavigate } from "react-router-dom";
+import type { Product } from "./products";
 
 const GIANNI_WALLET = "0x8146766B3fAA13D5F937960BcA92d66EfbE2c85B";
 
 export const useCheckout = () => {
     const [txHash, setTxHash] = useState<`0x${string}` | null>(null);
-    const { sendTransaction, isPending, error : sendError } = useSendTransaction();
+    const [productInfo, setProductInfo] = useState<Pick<Product, "name" | "price" | "description"> | null>(null);
+    const navigate = useNavigate();
+    const {
+        sendTransactionAsync,
+        isPending,
+        error: sendError,
+        data: wagmiTxHash,
+    } = useSendTransaction();
+    const activeTxHash = txHash ?? wagmiTxHash ?? null;
     const { isLoading: isConfirming , isSuccess : isConfirmed, error: receiptError } = useWaitForTransactionReceipt({
-        hash: txHash ?? undefined,
+        hash: activeTxHash ?? undefined,
+        query: { enabled: !!activeTxHash },
     });
-    const handleBuy = async (price: string) => {
-        if (!sendTransaction) {
-            console.error("sendTransaction not available — connect a wallet first");
+
+    useEffect(() => {
+        if (!isConfirmed || !activeTxHash || !productInfo) return;
+
+        const { name, price, description } = productInfo;
+        const params = new URLSearchParams({
+            tx: activeTxHash,
+            product: name,
+            price,
+            description,
+        });
+        window.open(`/success?${params.toString()}`, `_blank`);
+    }, [isConfirmed, activeTxHash, productInfo, navigate]);
+
+    const handleBuy = async (product: Pick<Product, "name" | "price" | "description">) => {
+        if (!sendTransactionAsync) {
+            console.error("sendTransactionAsync not available — connect a wallet first");
             return;
         }
 
-        try {
-            const res = await sendTransaction({
-                to: GIANNI_WALLET as `0x${string}`,
-                value: parseEther(price),
-            } as any);
+        setProductInfo(product);
 
-            // sendTransaction may return an object containing the transaction hash
-            const hash = (res as any)?.hash ?? (res as any) ?? null;
-            if (hash) setTxHash(hash as `0x${string}`);
+        try {
+            const hash = await sendTransactionAsync({
+                to: GIANNI_WALLET as `0x${string}`,
+                value: parseEther(product.price),
+            });
+            setTxHash(hash);
         } catch (err) {
-            console.error('sendTransaction failed', err);
+            console.error("sendTransaction failed", err);
+            setProductInfo(null);
         }
     };
 
-    return { handleBuy, isPending, isConfirming, isSuccess: isConfirmed, error: sendError || receiptError, txHash }
+    return { handleBuy, isPending, isConfirming, isSuccess: isConfirmed, error: sendError || receiptError, txHash: activeTxHash }
     };

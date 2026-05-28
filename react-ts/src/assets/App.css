@@ -15,6 +15,7 @@
   font-weight: 800;
   line-height: 1.05;
   text-align: center;
+  color: var(--color-heading);
 }
 
 .app-subtitle {
@@ -35,9 +36,9 @@
 }
 
 button.buy-button {
-  background: linear-gradient(135deg, #e27568, #aa6f45);
-  color: white;
-  border: none;
+  background: linear-gradient(135deg, var(--color-accent-strong), var(--color-heading));
+  color: var(--color-on-dark);
+  border: 1px solid var(--color-border);
   border-radius: 9999px;
   padding: 0.9rem 1.3rem;
   cursor: pointer;
@@ -46,7 +47,7 @@ button.buy-button {
 
 button.buy-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(226, 117, 104, 0.24);
+  box-shadow: 0 12px 24px var(--color-shadow);
   opacity: 0.98;
 }
 
@@ -63,15 +64,15 @@ button.buy-button:hover {
   display: flex;
   gap: 0.75rem;
   align-items: flex-start;
-  background: linear-gradient(180deg, rgba(255,213,199,0.98), rgba(244,194,150,0.98));
-  border: 1px solid rgba(170,111,69,0.18);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   padding: 0.9rem 1rem;
   border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(113,63,25,0.14);
+  box-shadow: 0 12px 30px var(--color-shadow);
 }
 
 .tx-emoji { font-size: 1.4rem; line-height: 1; }
-.tx-title { font-weight: 700; color: var(--color-text); }
+.tx-title { font-weight: 700; color: var(--color-heading); }
 .tx-link { display: inline-block; margin-top: 0.25rem; color: var(--color-accent); text-decoration: underline; font-size: 0.9rem; }
 .tx-error { margin-top: 0.25rem; color: #7a0b0b; font-size: 0.85rem; }
 
