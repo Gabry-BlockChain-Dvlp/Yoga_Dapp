@@ -1,3 +1,5 @@
+import { useEffect , useState } from 'react';
+
 type Props = {
   isPending?: boolean;
   isConfirming?: boolean;
@@ -7,8 +9,18 @@ type Props = {
 };
 
 export const TxStatus = ({ isPending, isConfirming, isSuccess, error, txHash }: Props) => {
-  const visible = !!(isPending || isConfirming || isSuccess || error);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (isPending || isConfirming || isSuccess || error) {
+      setVisible(true);
+      const timer = setTimeout(() => setVisible(false), 15000);
+      return () => clearTimeout(timer);
+    } 
+  }, [isPending, isConfirming, isSuccess, error]);
+
   if (!visible) return null;
+
 
   let title = '';
   let emoji = 'ℹ️';

@@ -28,11 +28,16 @@
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
+  background: color-mix(in srgb, var(--color-surface) 20%, transparent);
+  border-radius: 9999px;
+  padding-right: 0.75rem;
 }
 
 .app-brand-icon {
-  font-size: 1.75rem;
+  width: 60px;
+  height: 60px;
   line-height: 1;
+  fill: var(--color-bg);
 }
 
 .app-brand-title {
@@ -76,13 +81,8 @@
 }
 
 .app-network-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.25rem;
-  height: 1.25rem;
-  flex-shrink: 0;
-  color: var(--color-bg);
+  width: 20px;
+  height: 20px;
 }
 
 .app-network-icon svg {

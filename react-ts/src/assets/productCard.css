@@ -1,3 +1,4 @@
+
 .product-card {
   position: relative;
   border-radius: 1.5rem;
@@ -5,8 +6,7 @@
   background: var(--color-surface);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   height: 100%;
-  max-width: 280px;
-  margin: 0 auto;
+  width: 260px;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--color-border);
@@ -19,6 +19,7 @@
 }
 
 .product-image {
+  position: relative;
   height: 200px;
   width: 100%;
   overflow: hidden;
@@ -35,6 +36,21 @@
   transform: scale(1.04);
 }
 
+.product-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background: var(--color-heading);
+  color: var(--color-on-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .product-description {
   padding: 1.25rem;
   flex: 1;
@@ -45,7 +61,7 @@
 
 .product-name {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--color-heading);
 }
@@ -54,14 +70,16 @@
   margin: 0;
   color: var(--color-muted);
   line-height: 1.75;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  flex: 1;
 }
 
 .product-price {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   margin: 0;
   color: var(--color-text);
+  font-family: ui-monospace, monospace;
 }
 
 .card-actions {
@@ -72,17 +90,10 @@
   margin-top: auto;
 }
 
-button.buy-button {
-  width: auto;
-}
-
 @media (max-width: 768px) {
   .product-card {
-    max-width: 100%;
-  }
-
-  .product-description {
-    padding: 1rem;
+    width: 100%;
+    max-width: 340px;
   }
 
   .card-actions {
@@ -92,5 +103,6 @@ button.buy-button {
 
   button.buy-button {
     width: 100%;
+    text-align: center;
   }
 }

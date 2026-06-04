@@ -1,7 +1,0 @@
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5 rem;
-    justify-content: center;
-    padding: 1rem;
-  }

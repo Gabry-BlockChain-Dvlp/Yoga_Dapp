@@ -42,17 +42,18 @@ export const useCheckout = () => {
         }
 
         setProductInfo(product);
-
-        try {
-            const hash = await sendTransactionAsync({
-                to: GIANNI_WALLET as `0x${string}`,
-                value: parseEther(product.price),
-            });
-            setTxHash(hash);
-        } catch (err) {
-            console.error("sendTransaction failed", err);
-            setProductInfo(null);
-        }
+            try {
+                setProductInfo(null);
+                const hash = await sendTransactionAsync({
+                    to: GIANNI_WALLET as `0x${string}`,
+                    value: parseEther(product.price),
+                });
+                setTxHash(hash);
+                setProductInfo(product);
+            } catch (err) {
+                console.error("sendTransaction failed", err);
+                setProductInfo(null);
+            }
     };
 
     return { handleBuy, isPending, isConfirming, isSuccess: isConfirmed, error: sendError || receiptError, txHash: activeTxHash }

@@ -1,13 +1,19 @@
+
 import { ProductCard } from "./productCard";
 import { products, type Product } from "./products";
-import "../assets/gallery.css"
 
-export const Gallery = ({ onBuy }: { onBuy: (product: Pick<Product, "name" | "price" | "description">) => void }) => {
+type Props = {
+  onBuy: (product: Pick<Product, "name" | "price" | "description">) => void;
+  isPending?: boolean;
+};
+
+export const Gallery = ({ onBuy, isPending }: Props) => {
   return (
-    <div className="gallery">   
-        {products.map((product) => (
-            <ProductCard key={product.id} product={product} onBuy={onBuy} />
-        ))}
+    <div className="gallery">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} onBuy={onBuy} isPending={isPending} />
+      ))}
     </div>
   );
-}
+};
+ 

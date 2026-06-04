@@ -1,31 +1,70 @@
-.app-shell {
-  min-height: 100vh;
-  background: transparent;
-}
 
 .app-main {
   max-width: 90rem;
   margin: 0 auto;
-  padding: 2.5rem 1.25rem 4rem;
+  padding: 0 1.25rem 4rem;
 }
+ 
 
-.app-heading {
-  margin: 0 0 1.75rem;
+.hero {
+  position: relative;             
+  text-align: center;
+  padding: 6rem 1.25rem 5rem;
+  margin-bottom: 3rem;
+  border-radius: 1.5rem;
+  overflow: hidden;               
+  background-image: url('https://red-important-roadrunner-709.mypinata.cloud/ipfs/bafybeiefcv5lrwgevop65lmbwppkvfktr6wfkxfz76suzt7ufhorr33luu');
+  background-size: cover;
+  background-position: center center;
+  margin-top: 1.5rem;
+}
+ 
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 23, 32, 0.62);
+  border-radius: inherit;
+}
+ 
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+ 
+.hero-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(222, 208, 190, 0.35);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(222, 208, 190, 0.8);       
+  background: rgba(7, 23, 32, 0.4);
+}
+ 
+.hero h1 {
+  margin: 0 0 1rem;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   line-height: 1.05;
-  text-align: center;
-  color: var(--color-heading);
+  color: #ded0be;                      
+  letter-spacing: -0.03em;
 }
-
-.app-subtitle {
-  max-width: 56rem;
-  margin: 0 auto 2.5rem;
-  color: var(--color-muted);
-  text-align: center;
-  font-size: 1rem;
+ 
+.hero p {
+  margin: 0 auto;
+  max-width: 42rem;                     
+  color: rgba(222, 208, 190, 0.75);      
+  font-size: 1.05rem;
   line-height: 1.8;
 }
+ 
 
 .gallery {
   display: flex;
@@ -34,6 +73,7 @@
   justify-content: center;
   padding: 0;
 }
+ 
 
 button.buy-button {
   background: linear-gradient(135deg, var(--color-accent-strong), var(--color-heading));
@@ -42,24 +82,39 @@ button.buy-button {
   border-radius: 9999px;
   padding: 0.9rem 1.3rem;
   cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
-
-button.buy-button:hover {
+ 
+button.buy-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+ 
+button.buy-button:hover:not(:disabled) {
   transform: translateY(-1px);
   box-shadow: 0 12px 24px var(--color-shadow);
   opacity: 0.98;
 }
+ 
 
-/* Transaction toast */
 .tx-toast {
   position: fixed;
   right: 1rem;
   bottom: 1rem;
   z-index: 60;
   max-width: 320px;
+  animation: slide-up 0.25s ease;
 }
-
+ 
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
 .tx-toast-inner {
   display: flex;
   gap: 0.75rem;
@@ -70,9 +125,8 @@ button.buy-button:hover {
   border-radius: 12px;
   box-shadow: 0 12px 30px var(--color-shadow);
 }
-
+ 
 .tx-emoji { font-size: 1.4rem; line-height: 1; }
 .tx-title { font-weight: 700; color: var(--color-heading); }
 .tx-link { display: inline-block; margin-top: 0.25rem; color: var(--color-accent); text-decoration: underline; font-size: 0.9rem; }
 .tx-error { margin-top: 0.25rem; color: #7a0b0b; font-size: 0.85rem; }
-

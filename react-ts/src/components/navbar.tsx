@@ -32,7 +32,7 @@ export function Navbar() {
             <div className="app-navbar-inner">
                 <div className="app-navbar-row">
                     <div className="app-brand">
-                        <span className="app-brand-icon">🧘</span>
+                        <img className="app-brand-icon" src="./public/YogaLogo.svg" alt="Yoga DApp" />
                         <span className="app-brand-title">Yoga DApp</span>
                     </div>
 
