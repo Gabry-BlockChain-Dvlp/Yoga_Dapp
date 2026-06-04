@@ -2,6 +2,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount, useBalance, useChainId } from "wagmi";
 import { formatEther } from "viem";
 import "../assets/NavBar.css";
+import "../assets/YogaLogo.png";
 
 const NETWORK_NAMES: Record<number, string> = {
     11155111: "Sepolia",
@@ -32,7 +33,7 @@ export function Navbar() {
             <div className="app-navbar-inner">
                 <div className="app-navbar-row">
                     <div className="app-brand">
-                        <img className="app-brand-icon" src="/YogaLogo.svg" alt="Yoga DApp" />
+                        <img className="app-brand-icon" src={process.env.PUBLIC_URL + '/YogaLogo.png'} alt="Yoga DApp" />
                         <span className="app-brand-title">Yoga DApp</span>
                     </div>
 
