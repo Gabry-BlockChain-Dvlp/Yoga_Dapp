@@ -7,7 +7,7 @@ export interface Product {
   description: string;
   image: string;
 }
-const pinata = 'https://red-important-roadrunner-709.mypinata.cloud/ipfs/';
+export const pinata = 'https://red-important-roadrunner-709.mypinata.cloud/ipfs/';
 
 export const products: Product[] = [
     
