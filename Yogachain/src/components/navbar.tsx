@@ -32,7 +32,7 @@ export function Navbar() {
             <div className="app-navbar-inner">
                 <div className="app-navbar-row">
                     <div className="app-brand">
-                        <img className="app-brand-icon" src='/YogaLogo.svg' alt="Yoga DApp" />
+                        <img className="app-brand-icon" src='https://red-important-roadrunner-709.mypinata.cloud/ipfs/bafkreigs3qx5cgq2trw2zke63ekkgzjohigd6tzjcfsdzwlmuuppzytgxi' alt="Yoga DApp" />
                         <span className="app-brand-title">Yoga DApp</span>
                     </div>
 
